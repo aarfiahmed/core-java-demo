@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class StreamDemo {
+public class StreamDemoApp {
 
     @Test
     @Description("it will print unique numbers from list")
@@ -34,6 +34,12 @@ public class StreamDemo {
         List<Integer> integerStream = List.of(2, 10, 4, 1);
         System.out.println(integerStream.stream().reduce((x, y) -> x > y ? x : y).get());
         System.out.println(integerStream.stream().max(Integer::compareTo));
+    }
+
+    @Test
+    @Description("Exception handling in stream")
+    void shouldHandleExceptionInStream() {
+        Stream.of(1,3,4).map(integer -> integer/0).forEach(System.out::println);
     }
 
 
@@ -157,8 +163,8 @@ public class StreamDemo {
     @Test
     @Description("use of instance of operator with variable declaration")
     void instanceOf() {
-        Object obj = new StreamDemo();
-        if (obj instanceof StreamDemo x) {
+        Object obj = new StreamDemoApp();
+        if (obj instanceof StreamDemoApp x) {
             System.out.println(x);
         }
     }
